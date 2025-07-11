@@ -1,0 +1,64 @@
+I'm job with 13317
+My index is 3
+Let's create a file for sample sample3
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@node-14-07>
+Subject: Job 13317[3]: <[1-6]> in cluster <farm22> Done
+
+Job <[1-6]> was submitted from host <farm22-head2> by user <ab76> in cluster <farm22> at Fri Jul 11 14:12:17 2025
+Job was executed on host(s) <node-14-07>, in queue <normal>, as user <ab76> in cluster <farm22> at Fri Jul 11 14:12:18 2025
+</nfs/users/nfs_a/ab76> was used as the home directory.
+</nfs/users/nfs_a/ab76/farm-course> was used as the working directory.
+Started at Fri Jul 11 14:12:18 2025
+Terminated at Fri Jul 11 14:12:22 2025
+Results reported at Fri Jul 11 14:12:22 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#BSUB -G cellgeni
+#BSUB -q "normal"
+#BSUB -n 1
+#BSUB -M 2G
+#BSUB -R "select[mem>2G] rusage[mem=2G]"
+#BSUB -o "logs/arrayOutput%I.%J.log"
+#BSUB -e "logs/arrayError%I.%J.log"
+
+readarray -t samples < data/sample_table.csv
+sample_index=$((LSB_JOBINDEX - 1))
+sample=${samples[sample_index]}
+
+echo "I'm job with ${LSB_JOBID}"
+echo "My index is ${LSB_JOBINDEX}"
+echo "Let's create a file for sample $sample"
+
+mkdir -p results
+echo "This file was created by my job: $sample" > results/${sample}.txt
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   0.03 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     2048.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   3 sec.
+    Turnaround time :                            5 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/arrayError3.13317.log> for stderr output of this job.
+
