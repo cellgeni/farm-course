@@ -1,4 +1,4 @@
-#BSUB -G cellgeni
+#BSUB -G farm-course
 #BSUB -q "normal"
 #BSUB -n 1
 #BSUB -M 2G

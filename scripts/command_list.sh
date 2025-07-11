@@ -24,7 +24,8 @@ ils /seq/illumina/cellranger/cellranger302_count_4861STDY7208417_GRCh38-3_0_0
 imeta ls -C /seq/illumina/cellranger/cellranger302_count_4861STDY7208417_GRCh38-3_0_0
 
 ### LSF jobs
-bsub -G farm-course -q normal -n 1 -M "2G" -R "select[mem>2G] rusage[mem=2G]" -o "output%J.log" -e "error%J.log" ./scripts/lolkek_script.sh
+bsub -G farm-course -q normal -n 1 -M "2G" -R "select[mem>2G] rusage[mem=2G]" -o "output%J.log" -e "error%J.log" ./scripts/script.sh
+bsub -G farm-course -q normal -n 1 -M "2G" -R "select[mem>2G] rusage[mem=2G]" -o "output%J.log" -e "error%J.log" < ./scripts/script.bsub
 bsub -J "[1-6]" < scripts/array_script.bsub
 
 ### Modules

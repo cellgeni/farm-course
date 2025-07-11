@@ -16,12 +16,12 @@ This course covers:
 ```
 farm-course/
 ├── README.md                 # This file
-├── slides.pdf     # Course documentation
+├── slides.pdf                # Presentation slides
 ├── data/
 │   ├── sample_table.csv     # Sample data for array jobs
 │   └── sample.list          # Sample list file
 ├── scripts/
-│   ├── lolkek_script.sh     # Basic bash script example
+│   ├── script.sh     # Basic bash script example
 │   ├── array_script.bsub    # LSF array job script
 │   ├── python_script.bsub   # Python execution with modules/Singularity
 │   ├── add_values.py        # Simple Python calculator
@@ -42,7 +42,7 @@ farm-course/
 
 1. **Simple job submission:**
    ```bash
-   bsub -G cellgeni -q normal -n 1 -M "2G" -R "select[mem>2G] rusage[mem=2G]" -o "output%J.log" -e "error%J.log" ./scripts/lolkek_script.sh
+   bsub -G farm-course -q normal -n 1 -M "2G" -R "select[mem>2G] rusage[mem=2G]" -o "output%J.log" -e "error%J.log" ./scripts/script.sh
    ```
 
 2. **Array job submission:**
@@ -57,7 +57,7 @@ farm-course/
 
 ## Script Examples
 
-### 1. Basic Bash Script (`lolkek_script.sh`)
+### 1. Basic Bash Script (`script.sh`)
 Demonstrates:
 - File output redirection
 - stdout vs stderr output
@@ -163,8 +163,8 @@ bkill <jobid>           # Kill a job
 
 1. **"command not found" errors**: Use absolute paths for scripts
    ```bash
-   # Instead of: lolkek_script.sh
-   # Use: ./scripts/lolkek_script.sh
+   # Instead of: script.sh
+   # Use: ./scripts/script.sh
    ```
 
 2. **Permission denied**: Make scripts executable
