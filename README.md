@@ -16,7 +16,7 @@ This course covers:
 ```
 farm-course/
 ├── README.md                 # This file
-├── CopyofFARMCourse.pdf     # Course documentation
+├── slides.pdf     # Course documentation
 ├── data/
 │   ├── sample_table.csv     # Sample data for array jobs
 │   └── sample.list          # Sample list file
