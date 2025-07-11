@@ -24,8 +24,10 @@ ils /seq/illumina/cellranger/cellranger302_count_4861STDY7208417_GRCh38-3_0_0
 imeta ls -C /seq/illumina/cellranger/cellranger302_count_4861STDY7208417_GRCh38-3_0_0
 
 ### LSF jobs
-bsub -G farm-course -q normal -n 1 -M "2G" -R "select[mem>2G] rusage[mem=2G]" -o "output%J.log" -e "error%J.log" ./scripts/script.sh
-bsub -G farm-course -q normal -n 1 -M "2G" -R "select[mem>2G] rusage[mem=2G]" -o "output%J.log" -e "error%J.log" < ./scripts/script.bsub
+mkdir logs
+mkdir results
+bsub -G farm-course -q normal -n 1 -M "2G" -R "select[mem>2G] rusage[mem=2G]" -o "logs/output%J.log" -e "error%J.log" ./scripts/script.sh
+bsub -G farm-course -q normal -n 1 -M "2G" -R "select[mem>2G] rusage[mem=2G]" -o "logs/output%J.log" -e "error%J.log" < ./scripts/script.bsub
 bsub -J "[1-6]" < scripts/array_script.bsub
 
 ### Modules
@@ -41,3 +43,5 @@ singularity shell --bind /lustre,/nfs /nfs/cellgeni/singularity/images/toh5ad.si
 module load ISG/conda
 conda create -n mypyenv python=3.11 -y
 conda activate mypyenv
+
+bsub < scripts/python_script.bsub
